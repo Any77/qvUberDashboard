@@ -1,0 +1,20 @@
+Cases:
+
+With uber credits:
+https://riders.uber.com/trips/cf097a6d-aa00-4152-8021-02ec888f38d8
+
+2 splits and <minimum fare 
+https://riders.uber.com/trips/5ac38d3c-854c-4e75-b174-070e9da1a650
+
+with surge >1x
+https://riders.uber.com/trips/b31ee977-43ed-4a23-8950-3be808a07785
+
+normal fare
+https://riders.uber.com/trips/90984e3e-14b3-4564-8f01-b2dcf7bbe535
+
+Viatge on m'han tornat diners degut a reclamacio
+https://riders.uber.com/trips/6657a9e1-362a-46f3-ae76-d31e7b1290f3
+https://riders.uber.com/trips/d1a00924-ff17-40cd-8f82-70c3fddc7502
+
+fare correction (100% refund)
+https://riders.uber.com/trips/c6bb121b-c1ad-438f-a175-b2fe18c3974d

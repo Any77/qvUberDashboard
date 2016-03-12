@@ -1,0 +1,25 @@
+key = 'fareBase'; // there's a base fare according to uber car type (asof 23/02/16 uberX is 2.5 ). No time/distance/surge involved in this fare (so far).
+key = 'fareDistance'; // fare due to distance
+key = 'fareTime'; // fare due to time
+key = 'fareSubtotal'; // sum of fares: base+distance+time+remaining to minimum fare+extra surge (>1x)
+key = 'fareTotal'; // fareSubtotal+fare fee for Split (option available only when the trip is being shared)
+key = 'fareUberCredit'; // Credit offered by uber (i.e: if you share your promotion code)
+key = 'fareSplitFee'; //Additional commision for trip split (asof 23/02/16 is £0.4+(0.2)*#NumSplitters). This fee is added to the total, and then the total fare is divided by total number of splitters 
+key = 'fareNormalFare'; //when surge >1x normal fare (so at 1x) is shown
+key = 'fareMinimumFare'; // fare charged to hit the minimum fare price (asof 23/02/15 £5)
+key = 'fareCharged'; //actual money charged into the 'credit card' (-splits, -UberCredit)
+key = 'fareSurge'; //fare due to surge increase (>1x) 
+stats.properties['fareSplitWith']+=","+payee; //list of split-users separated by ,
+stats.properties['fareSplitPaid']=value
+key = 'car';
+key = 'distance';
+key = 'duration';
+stats.properties.rating
+stats.properties.startTime = $('.trip-address:last-child p').text(); // start time (since the moment where the driver pressed start)
+stats.properties.endTime = $('.trip-address:first-child p').text(); // end time
+stats.properties.startAddress = $('.trip-address:last-child h6').text(); // start address/pick up point
+stats.properties.endAddress = $('.trip-address:first-child h6').text(); // destination address
+stats.properties.date = $('.page-lead div').text(); // date of the trip
+stats.properties.driverName = $('.trip-details__review .grid__item:first-child td:last-child').text().replace('You rode with ', ''); // driver name
+stats.properties.driverImg= $(".driver-avatar").children('img').attr('src'); // driver picture
+stats.properties.TripID= 
