@@ -1,7 +1,7 @@
 # qvUberDashboard
 > QlikView app to Analyse your Uber trip data and usage.
 
-Did you ever wonder how much did you spent so far in Uber? What would look like overlapping all your trips? The impact of the fare surges in your final charged price? With whom did you split more trips? Your trend usage or hourly usage pattern? I'm sure you did. And I did too :) That's why I created this App.
+Have you ever wondered how much you spent so far in Uber? What would it look like to overlap all your trips? The impact of the fare surges in your final charged price? With whom did you split more trips? Your trend usage or hourly usage pattern? I'm sure you did. And I did too :) That's why I created this App.
 
 
 Well, to be honest, all started in a pub. As many good stories.. I was chatting around with some friends, complaining about me always going to their area instead of finding a middle point. They said that's not true.. I was unable to prove it back at those days, not anymore.. :) 
@@ -10,7 +10,7 @@ Well, to be honest, all started in a pub. As many good stories.. I was chatting 
 ![Demo](img/demo.gif)
 
 
-Data is among all of us, and we are data as well. Sometimes we can get something usefull and meaningfull of it. I hope this help you to understand (and forecast?) your Uber usage. And who knows, maybe you can challenge some friends too..  
+Data is among all of us, and we are data as well. Sometimes we can get something useful and meaningful of it. I hope this help you to understand (and forecast?) your Uber usage. And who knows, maybe you can challenge some friends too..  
 
 **Note: This code is provided for reference and personal purposes only.**
 
@@ -27,7 +27,7 @@ Features
 - 'Shared with' ranking
 - Trip deviation against google directions route (in trip details)
 - Different car support: UberPOOL, UberX, UberXL, UberExec and UberLUX.
-- Flag trips with some fare corrections (by uber), Uber credit or promotions.
+- Flag trips with some fare corrections (by Uber), Uber credit or promotions.
 - Fees/Fares included:
    - Fare Charged, Base, Normal, Surge, Distance, Time, Subtotal, Uber Credit, Minimum Fare, Total, Split Fee, Split Paid, Rounding Down and  Safe Rides
 
@@ -53,13 +53,13 @@ npm install
 ```
 
 ## How it works
-When the qvw app is reloaded, the credentials from the login page are used to call a nodejs application in a terminal. This app, connects to uber webside with that username/password and retreives the html data of every single trip (visiting each page as you would do in the browser). 
+When the qvw app is reloaded, the credentials from the login page are used to call a nodejs application in a terminal. This app, connects to Uber website with that username/password and retrieves the html data of every single trip (visiting each page as you would do in the browser). 
 For each trip, it parses the HTML from the detail page to create a js class with all the trip attributes (ie: coordinates from google static map, fare charged, normal fare, surge, split with, origin/destination, etc..) and then it dumps all that info into out/UberData.txt.
 
 After this point, QlikView reads the .txt file to create a star-scheme data model, with a trip centric fact table. Some conversions and calculations are done in the script to ease the calculations in the QlikView layout.
 
 
-*The uber-extractor is based based on [https://github.com/chriswhong/uber-trip-script](https://github.com/chriswhong/uber-trip-script) (which was inspired on [https://github.com/joshhunt/uber](https://github.com/joshhunt/uber)*
+*The Uber-extractor is based based on [https://github.com/chriswhong/Uber-trip-script](https://github.com/chriswhong/Uber-trip-script) (which was inspired on [https://github.com/joshhunt/Uber](https://github.com/joshhunt/Uber)*
 
 
 
@@ -86,9 +86,9 @@ David Alcobero:
 - [LinkedIn](https://uk.linkedin.com/in/davidalcobero) 
 - david.alcobero@gmail.com
 
+TMFWLP.
 
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
 [https://github.com/anguila](https://github.com/anguila)
-
