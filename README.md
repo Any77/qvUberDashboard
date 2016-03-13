@@ -3,7 +3,8 @@
 
 Did you ever wonder how much did you spent so far in Uber? What would look like overlapping all your trips? The impact of the fare surges in your final charged price? With whom did you split more trips? Your trend usage or hourly usage pattern? I'm sure you did. And I did too :) That's why I created this App.
 
-Well, to be honest, all started in a pub. As many good stories.. I was chatting around with a couples of friends, saying that it's me always going to their area, they said that's not true.. well, they were wrong. And I was able to prove it :) 
+
+Well, to be honest, all started in a pub. As many good stories.. I was chatting around with some friends, complaining about me always going to their area instead of finding a middle point. They said that's not true.. I was unable to prove it back at those days, not anymore.. :) 
 
 
 ![Demo](img/demo.gif)
@@ -52,10 +53,10 @@ npm install
 ```
 
 ## How it works
-When the app is reloaded, the credentials from the login page are used to call a nodejs application in a terminal. This app, connects to uber webside with the username/password provided and retreives the html data of every single trip (visiting each page as you would do in the browser). 
-For each trip, it parses the HTML from the detail page to create a class with all the trip attributes (ie: coordinates from google static map, fare charged, normal fare, surge, split with, origin/destination, etc..) and then it dumps all that info into out/UberData.txt.
+When the qvw app is reloaded, the credentials from the login page are used to call a nodejs application in a terminal. This app, connects to uber webside with that username/password and retreives the html data of every single trip (visiting each page as you would do in the browser). 
+For each trip, it parses the HTML from the detail page to create a js class with all the trip attributes (ie: coordinates from google static map, fare charged, normal fare, surge, split with, origin/destination, etc..) and then it dumps all that info into out/UberData.txt.
 
-After this point, QlikView reads the .txt file to create a Star-scheme data model, with a trip centric fact table. Some conversions and calculations are done in the script to ease calculations in the QlikView layout.
+After this point, QlikView reads the .txt file to create a star-scheme data model, with a trip centric fact table. Some conversions and calculations are done in the script to ease the calculations in the QlikView layout.
 
 
 *The uber-extractor is based based on [https://github.com/chriswhong/uber-trip-script](https://github.com/chriswhong/uber-trip-script) (which was inspired on [https://github.com/joshhunt/uber](https://github.com/joshhunt/uber)*
