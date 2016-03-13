@@ -34,8 +34,10 @@ Features
 
 
 ## Installation
+Install Qlikview (if required):
+[http://www.qlik.com/try-or-buy/download-qlikview](http://www.qlik.com/try-or-buy/download-qlikview)
 
-Install Uber Map qvw Extension in:
+Install Uber Map qvw Extension (double click on .qar file):
 ```sh
 Uber Google Maps Javascript API v3 Toolkit 2.qar
 ```
