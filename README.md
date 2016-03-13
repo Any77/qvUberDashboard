@@ -61,7 +61,7 @@ For each trip, it parses the HTML from the detail page to create a js class with
 After this point, QlikView reads the .txt file to create a star-scheme data model, with a trip centric fact table. Some conversions and calculations are done in the script to ease the calculations in the QlikView layout.
 
 
-*The Uber-extractor is based based on [https://github.com/chriswhong/Uber-trip-script](https://github.com/chriswhong/Uber-trip-script) (which was inspired on [https://github.com/joshhunt/Uber](https://github.com/joshhunt/Uber)*
+*The Uber-extractor is based on [https://github.com/chriswhong/Uber-trip-script](https://github.com/chriswhong/Uber-trip-script) (which was inspired on [https://github.com/joshhunt/Uber](https://github.com/joshhunt/Uber) )*
 
 
 
