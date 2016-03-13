@@ -1,66 +1,93 @@
-# Product Name
-> Short blurb about what your product does.
-![](img/demo.gif)
+# qvUberDashboard
+> QlikView app to Analyse your Uber trip data and usage.
+
+Did you ever wonder how much did you spent so far in Uber? What would look like overlapping all your trips? The impact of the fare surges in your final charged price? With whom did you split more trips? Your trend usage or hourly usage pattern? I'm sure you did. And I did too :) That's why I created this App.
+
+Well, to be honest, all started in a pub. As many good stories.. I was chatting around with a couples of friends, saying that it's me always going to their area, they said that's not true.. well, they were wrong. And I was able to prove it :) 
 
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+![Demo](img/demo.gif)
 
-One to two paragraph statement about your product and what it does.
+
+Data is among all of us, and we are data as well. Sometimes we can get something usefull and meaningfull of it. I hope this help you to understand (and forecast?) your Uber usage. And who knows, maybe you can challenge some friends too..  
+
+**Note: This code is provided for reference and personal purposes only.**
+
+Features
+--------
+- Multi-currency support (£, $ and €)
+- Multi country support
+   - Tested only in: UK, FR and US (CA)
+- Usage trend
+- Overall trip view in google maps
+- Heat map view in google maps
+- Trip usage and surge day/hour heatmap
+- Surge split
+- 'Shared with' ranking
+- Trip deviation against google directions route (in trip details)
+- Different car support: UberPOOL, UberX, UberXL, UberExec and UberLUX.
+- Flag trips with some fare corrections (by uber), Uber credit or promotions.
+- Fees/Fares included:
+   - Fare Charged, Base, Normal, Surge, Distance, Time, Subtotal, Uber Credit, Minimum Fare, Total, Split Fee, Split Paid, Rounding Down and  Safe Rides
+
+
 
 ## Installation
 
-OS X & Linux:
-
+Install Uber Map qvw Extension in:
 ```sh
-npm install my-crazy-module --save
+Uber Google Maps Javascript API v3 Toolkit 2.qar
+```
+Extension based on GoogleMapsAPIv3Toolkit and slightly modified to enhance the map to display Uber trips
+[https://github.com/rvspt/GoogleMapsAPIv3Toolkit-QV](https://github.com/rvspt/GoogleMapsAPIv3Toolkit-QV)
+
+Install NodeJs
+[https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
+
+Install missing libraries (when required). Open a terminal (cmd.exe) and in the qvUberDashBoard Folder:
+```sh
+cd extractor/
+npm install
 ```
 
-Windows:
+## How it works
+When the app is reloaded, the credentials from the login page are used to call a nodejs application in a terminal. This app, connects to uber webside with the username/password provided and retreives the html data of every single trip (visiting each page as you would do in the browser). 
+For each trip, it parses the HTML from the detail page to create a class with all the trip attributes (ie: coordinates from google static map, fare charged, normal fare, surge, split with, origin/destination, etc..) and then it dumps all that info into out/UberData.txt.
 
-```sh
-edit autoexec.bat
-```
+After this point, QlikView reads the .txt file to create a Star-scheme data model, with a trip centric fact table. Some conversions and calculations are done in the script to ease calculations in the QlikView layout.
 
-## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+*The uber-extractor is based based on [https://github.com/chriswhong/uber-trip-script](https://github.com/chriswhong/uber-trip-script) (which was inspired on [https://github.com/joshhunt/uber](https://github.com/joshhunt/uber)*
 
-## Development setup
 
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
 
-```sh
-make install
-npm test
-```
 
-## Release History
+## Screenshots
+Login
+![Login](screenshots/login.png)
 
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
-* 0.0.1
-    * Work in progress
+Dashboard with Heatmap
+![Main](screenshots/main.png)
+
+Dashboard with Trip Paths
+![Main](screenshots/main-2.png)
+
+Trip Details
+![Main](screenshots/detail.png)
+
+
 
 ## Meta
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+David Alcobero:
+- [@dalcobero](https://twitter.com/dalcobero) 
+- [LinkedIn](https://uk.linkedin.com/in/davidalcobero) 
+- david.alcobero@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
 
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+Distributed under the MIT license. See ``LICENSE`` for more information.
+
+[https://github.com/anguila](https://github.com/anguila)
+
