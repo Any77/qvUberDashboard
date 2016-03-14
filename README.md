@@ -34,25 +34,25 @@ Features
 
 
 ## Installation
-Install Qlikview (if required):
-[http://www.qlik.com/try-or-buy/download-qlikview](http://www.qlik.com/try-or-buy/download-qlikview)
+0. Install Qlikview (if required):
+   [http://www.qlik.com/try-or-buy/download-qlikview](http://www.qlik.com/try-or-buy/download-qlikview)
 
-Install Uber Map qvw Extension (double click on .qar file):
-```sh
-Uber Google Maps Javascript API v3 Toolkit 2.qar
-```
-Extension based on GoogleMapsAPIv3Toolkit and slightly modified to enhance the map to display Uber trips
-[https://github.com/rvspt/GoogleMapsAPIv3Toolkit-QV](https://github.com/rvspt/GoogleMapsAPIv3Toolkit-QV)
+1. Install Uber Map qvw Extension (double click on .qar file):
+   ```sh
+   Uber Google Maps Javascript API v3 Toolkit 2.qar
+   ```
+   Extension based on GoogleMapsAPIv3Toolkit and slightly modified to enhance the map to display Uber trips
+   [https://github.com/rvspt/GoogleMapsAPIv3Toolkit-QV](https://github.com/rvspt/GoogleMapsAPIv3Toolkit-QV)
 
-Install NodeJs
-[https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+2. Install NodeJs:
+   [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
 
-Install missing libraries (when required). Open a terminal (cmd.exe) and in the qvUberDashBoard Folder:
-```sh
-cd extractor/
-npm install
-```
+3. Install missing libraries (when required). Open a terminal (cmd.exe) and in the qvUberDashBoard Folder:
+   ```sh
+   cd extractor/
+   npm install
+   ```
 
 ## How it works
 When the qvw app is reloaded, the credentials from the login page are used to call a nodejs application in a terminal. This app, connects to Uber website with that username/password and retrieves the html data of every single trip (visiting each page as you would do in the browser). 
@@ -90,6 +90,7 @@ David Alcobero:
 
 TMFWLP.
 
+## License
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
