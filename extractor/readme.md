@@ -2,7 +2,7 @@
 
 Note: This code is provided for reference purposes only.  
 
-Code based on https://github.com/chriswhong/uber-trip-script (which was based on [https://github.com/joshhunt/uber](https://github.com/joshhunt/uber)
+Code based on https://github.com/chriswhong/uber-trip-script (which was based on [https://github.com/joshhunt/uber](https://github.com/joshhunt/uber))
 
 Differences from the source linked above:
 - No config.json needed (credentials passed as a parameters)
