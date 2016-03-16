@@ -80,6 +80,13 @@ Trip Details
 ![Main](screenshots/detail.png)
 
 
+Change log
+--------
+- v201603-01 (16/03/2016)
+   - Bugfix in extractor to load uber accounts with only one single page.
+   - Logging system added (in login page, when error comes out, a log icon is enabled to be able to see log details in Qlikview)
+   - Validation to detect accounts with no trips (uberData.txt exists, but no trips inside).
+
 
 ## Meta
 
