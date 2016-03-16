@@ -132,7 +132,15 @@ var getNumPagesToGet=function() {
 
 			//$($('.pagination')[0]).find('a').attr('href')
 			//?page=99
-			var pageNum=parseInt($(row).last().find('a').attr('href').replace('?page=',''))+1;
+			var pageNum=1;
+			
+			if(typeof($(row).last().find('a').attr('href')) != "undefined"){
+				pageNum=parseInt($(row).last().find('a').attr('href').replace('?page=',''))+1;
+			}
+			else {
+				pageNum=1;				
+				break; //if  ?page not found is because there's only one page
+			}
 			
 			var trips = $(row).find('.trip-expand__origin');
 			var tripIds = trips.map(function(i, trip) {
