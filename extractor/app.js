@@ -16,7 +16,9 @@ var request = request.defaults({
 
 var encoding = 'UTF-8';
 
-//var config = require('./config.json');
+
+var logStream = fs.createWriteStream(process.argv[1].replace('app.js','out/log.txt'));	   
+
 var args = process.argv.slice(2);
 
 var splits={};
@@ -34,6 +36,7 @@ var CAR_MAP = {
 };
 
 console.log("\nRequesting login page...");
+logStream.write("Requesting login page...\n");
 
 request(LOGIN_URL, function(err, res, body) {
   //var bodyEncoded = iconv.decode(body,encoding);	
@@ -46,6 +49,7 @@ request(LOGIN_URL, function(err, res, body) {
   if (args.length <2)
   {
 		console.log("\nError! Username and password must be provided.");
+		logStream.write("\nError! Username and password must be provided.\n");
 		return false;
   }
 
@@ -63,7 +67,8 @@ var login = function(user, pass, csrf) {
   };
 
   console.log("\nLogging in as " + user+"...");
-
+  logStream.write("\nLogging in as " + user+"...\n");
+  
   return request.post(LOGIN_URL, {
     form: form
   }, function(err, res, body) {
@@ -74,17 +79,20 @@ var login = function(user, pass, csrf) {
     var redirectUrl = 'https://riders.uber.com/trips';
     return request(redirectUrl, function(err) {
       if (err) {
+		  logStream.write("Error: " + err+"\n");
         throw err;
       }
 	  
 	  if (this.path.includes('login'))
 	  {
 		  console.log("\nAuthentication failed :(\nInvalid email or password.");
+		  logStream.write("\nAuthentication failed :(\nInvalid email or password.\n");
 		  return false;
 	  }
 	  else 
 	  {
 		 console.log("\nCool, logged in :)");
+		 logStream.write("\nCool, logged in :)\n");
 		 return getNumPagesToGet();
 	  }
 	
@@ -103,6 +111,7 @@ var requestTripList = function(page, cb) {
   };
 
   console.log("Fetching", listUrl);
+  logStream.write("Fetching "+ listUrl+"\n");
 
   return request(options, function(err, res, body) {
 	return cb(err, body);
@@ -117,8 +126,9 @@ var getNumPagesToGet=function() {
 		tmpPagesToGet.push(i);
 	}
 	
-	console.log("\nFinding out how many pages we've to read...\n")
-
+	console.log("\nFinding out how many pages we've to read...\n");
+	logStream.write("\nFinding out how many pages we've to read...\n");
+	
 	return async.mapLimit(tmpPagesToGet, CONCURRENCY, requestTripList, function(err, result) {
 		var combined = result.join(' ');
 		var $ = cheerio.load(combined);
@@ -162,6 +172,7 @@ var getNumPagesToGet=function() {
 
 	}, function(err){
 		if (err) {
+			logStream.write("Error: " + err+"\n");
 		  throw err;
 		}
 	});
@@ -173,6 +184,7 @@ var startParsing = function(getUpToPage) {
  // https://riders.uber.com/trips?pages=&page=21
   
   console.log("\nReading trips up to page num. "+getUpToPage);
+  logStream.write("\nReading trips up to page num. "+getUpToPage+"\n");
   
   var pagesToGet = [];  
   
@@ -181,14 +193,17 @@ var startParsing = function(getUpToPage) {
   }
 
   console.log("\nGetting pages "+ pagesToGet);
+  logStream.write("\nGetting pages "+ pagesToGet+"\n");
   
   return async.mapLimit(pagesToGet, CONCURRENCY, requestTripList, function(err, result) {
     if (err) {
+		logStream.write("Error: " + err+"\n");
       throw err;
     }
 	
     console.log("\nFetched all pages, got " + result.length + " results\n");
-    
+    logStream.write("\nFetched all pages, got " + result.length + " results\n");
+	
     var combined = result.join(' ');
     var $ = cheerio.load(combined);
     
@@ -213,11 +228,13 @@ var startParsing = function(getUpToPage) {
 	
     return async.map(tripIds, downloadTrip, function(err, results) {
       if (err) {
+		  logStream.write("Error: " + err+"\n");
         throw err;
       }
 
       console.log("\nFinished downloading all trips\n");
-
+	  logStream.write("\nFinished downloading all trips\n");
+	  
       // parse results and remove those that were errors
       for (var i = results.length; i--;) {
         if (results[i] == "error") {
@@ -233,6 +250,7 @@ var startParsing = function(getUpToPage) {
  
 	 //Format and export uber trips in a .txt file to be read by QV ---------------------------------------------------------
 	console.log("Writing trips into file out/uberData.txt...");
+	logStream.write("Writing trips into file out/uberData.txt...\n");
 	
 //	fs.closeSync(fs.openSync('out/uberData.txt', 'w'));//Creates the file if doesn't exist. And truncate it if it already exists.
 //	fs.closeSync(fs.openSync('out/uberData.txt', 'w'));
@@ -308,7 +326,11 @@ var startParsing = function(getUpToPage) {
 				stream.write(results[i].properties.tripHasCorrection+"\n")
 			}
 		}
-		return stream.end(function () { console.log("\nDone :)\n"); });
+		return stream.end(function () { 
+			console.log("\nDone :)\n"); 
+			logStream.write("\nDone :)\n");
+		});
+
 	});	
 	
  //  console.log("Writing geojson into file out/uberData.geojson...\n");
@@ -323,9 +345,11 @@ var downloadTrip = function(tripId, cb) {
   var tripUrl = "https://riders.uber.com/trips/" + tripId;
   
   console.log("Downloading trip " + tripId);
+  logStream.write("Downloading trip " + tripId+"\n");
   
   return request(tripUrl, function(err, res, body) {
     if (err) {
+		logStream.write("Error: " + err+"\n");
       throw err;
     }
 
