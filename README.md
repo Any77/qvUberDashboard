@@ -74,6 +74,9 @@ Dashboard with Heatmap
 ![Main](screenshots/main.png)
 
 Dashboard with Trip Paths
+![Main](screenshots/main-3.png)
+
+Filters on the top
 ![Main](screenshots/main-2.png)
 
 Trip Details
