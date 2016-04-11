@@ -68,7 +68,7 @@ After this point, QlikView reads the .txt file to create a star-scheme data mode
 
 ## Screenshots
 Login
-![Login](screenshots/login.png)
+![Login](screenshots/login-page.png)
 
 Dashboard with Heatmap
 ![Main](screenshots/main.png)
