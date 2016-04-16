@@ -85,6 +85,12 @@ Trip Details
 
 Change log
 --------
+- v201604-01 (16/04/2016)
+   - Minor changes in the extractor to make it work with older versions of nodejs (by Janusz Twardziak)									
+	- Show log/alert icon in Login page when no trip data.
+	- Fixed some typos in the app
+	- Minor layout changes
+
 - v201603-01 (16/03/2016)
    - Bugfix in extractor to load uber accounts with only one single page.
    - Logging system added (in login page, when error comes out, a log icon is enabled to be able to see log details in Qlikview)
