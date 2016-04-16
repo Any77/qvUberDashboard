@@ -83,7 +83,7 @@ var login = function(user, pass, csrf) {
         throw err;
       }
 	  
-	  if (this.path.includes('login'))
+	  if (this.path.indexOf('login') > 0)
 	  {
 		  console.log("\nAuthentication failed :(\nInvalid email or password.");
 		  logStream.write("\nAuthentication failed :(\nInvalid email or password.\n");
@@ -447,24 +447,24 @@ var parseStats = function(tripId, html, cb) {
 	
 	if(key=='')
 	{	
-		if(typeof(label) != "undefined" && label.includes("safe rides"))
+		if(typeof(label) != "undefined" && (label.indexOf("safe rides")>0))
 		{
 			key='fareSafeRides';
 		}
-		else if(typeof(label) != "undefined" && label.includes("rounding down"))
+		else if(typeof(label) != "undefined" && (label.indexOf("rounding down")>-1))
 		{
 			key='fareRoundingDown';
 		}	
-		else if(typeof(label) != "undefined" && label.includes('minimum'))
+		else if(typeof(label) != "undefined" && (label.indexOf('minimum') > -1))
 		{ 
 			key = 'fareMinimumFare'; // fare charged to hit the minimum fare price (asof 23/02/15 £5)
 		}
-		else if (typeof(label) != "undefined" && label.includes('charged')) 
+		else if (typeof(label) != "undefined" && (label.indexOf('charged')>-1)) 
 		{
 			key = 'fareCharged'; //actual money charged into the 'credit card' (-splits, -UberCredit)
 		} 
 
-		else if (typeof(label) != "undefined" && label.includes('surge')) 
+		else if (typeof(label) != "undefined" && (label.indexOf('surge')>-1)) 
 		{
 			key = 'fareSurge'; //fare due to surge increase (>1x) 
 		} 
